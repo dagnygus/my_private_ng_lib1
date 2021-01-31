@@ -89,3 +89,14 @@ import { Observable, PartialObserver, Subscription } from 'rxjs';
   }
   return subcription;
 };
+
+declare module 'rxjs' {
+  interface Observable<T> {
+    listen(listiner: DnngComponentBase | DnngStateManager<any>, observer: PartialObserver<T>): void;
+    // tslint:disable-next-line: unified-signatures
+    listen(listiner: DnngComponentBase | DnngStateManager<any>, observer: (value: T) => void): void;
+    listenTo(listiner: DnngComponentBase | DnngStateManager<any>, observer: PartialObserver<T>): void;
+    // tslint:disable-next-line: unified-signatures
+    listenTo(listiner: DnngComponentBase | DnngStateManager<any>, observer: (value: T) => void): void;
+  }
+}
