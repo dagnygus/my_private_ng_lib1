@@ -11,7 +11,9 @@ import { Observable, PartialObserver, Subscription } from 'rxjs';
   const originalUnsubcribe = subcription.unsubscribe;
   subcription.unsubscribe = function(this: Subscription): void {
     const index = ((context as any).__dn_subscriptions__ as Array<Subscription>).indexOf(subcription);
-    ((context as any).__dn_subscriptions__ as Array<Subscription>).splice(index);
+    if (index >= 0) {
+      ((context as any).__dn_subscriptions__ as Array<Subscription>).splice(index);
+    }
     originalUnsubcribe.call(this);
   };
   return subcription;
