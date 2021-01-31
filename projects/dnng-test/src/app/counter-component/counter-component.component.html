@@ -1,0 +1,15 @@
+<ng-container appSomeTestingDir>
+  <div class="counter-container">
+    <div id="countBox" class="counter-count-container">
+      {{count}}
+    </div>
+    <app-inner-counter [count]="count" appSomeTestingDir></app-inner-counter>
+    <app-content-inner-counter>{{ count }}</app-content-inner-counter>
+
+    <div class="counter-buttons">
+      <button id="incrememtButton" (click)="increment()">increment</button>
+      <button id="decrementButton" (click)="decrement()">decrement</button>
+      <button id="incrementTenTimesButton" (click)="inproperInceremant()">decrement</button>
+    </div>
+  </div>
+</ng-container>
